@@ -1,4 +1,4 @@
-import 'package:designedbyalla_ecotourism/screens/sign_page.dart';
+import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_page.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -18,7 +18,10 @@ class WelcomeScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Expanded(
-                  child: Image.asset('images/mgeecologo.png'),
+                  child: Hero(
+                    tag: 'mgeecologo',
+                    child: Image.asset('images/mgeecologo.png'),
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
