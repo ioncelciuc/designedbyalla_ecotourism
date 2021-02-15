@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "213512873166",
+    "project_id": "designedbyalla-ecotourism",
+    "storage_bucket": "designedbyalla-ecotourism.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213512873166:android:21911128059922ac9edc9f",
+        "android_client_info": {
+          "package_name": "com.designedbyalla.mgeeco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213512873166-ttpeq8nrtd6ck9soasve1k0r131o89se.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5jLwxo70TFwdGcBC15IOpSxtFpBqWX5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213512873166-ttpeq8nrtd6ck9soasve1k0r131o89se.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
