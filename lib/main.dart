@@ -1,14 +1,21 @@
-import 'package:designedbyalla_ecotourism/screens/part1/choose_language_page.dart';
+import 'package:designedbyalla_ecotourism/screens/choose_avatar.dart';
+import 'package:designedbyalla_ecotourism/screens/choose_language_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_in_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_up_page.dart';
+import 'package:designedbyalla_ecotourism/screens/steps_page/steps_page.dart';
+import 'package:designedbyalla_ecotourism/screens/survey_page.dart';
 import 'package:designedbyalla_ecotourism/screens/welcome_screen.dart';
+import 'package:designedbyalla_ecotourism/strings.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  Strings.en = sharedPreferences.getBool('EN') ?? true;
   runApp(MyApp());
 }
 
@@ -21,12 +28,16 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
       ),
       initialRoute: WelcomeScreen.id,
+      //initialRoute: ChooseAvatar.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         SignPage.id: (context) => SignPage(),
         SignInPage.id: (context) => SignInPage(),
         SignUpPage.id: (context) => SignUpPage(),
         ChooseLanguagePage.id: (context) => ChooseLanguagePage(),
+        StepsPage.id: (context) => StepsPage(),
+        ChooseAvatar.id: (contex) => ChooseAvatar(),
+        SurveyPage.id: (context) => SurveyPage(),
       },
     );
   }

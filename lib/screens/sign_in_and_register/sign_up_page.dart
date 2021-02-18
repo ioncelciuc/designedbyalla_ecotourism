@@ -1,5 +1,7 @@
 import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
-import 'package:designedbyalla_ecotourism/screens/part1/choose_language_page.dart';
+import 'package:designedbyalla_ecotourism/models/user_model.dart';
+import 'package:designedbyalla_ecotourism/screens/choose_language_page.dart';
+import 'package:designedbyalla_ecotourism/services/helper.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +61,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               textAlign: TextAlign.center,
                               keyboardType: TextInputType.emailAddress,
                               decoration: textFieldDecoration.copyWith(
-                                  hintText: 'email'),
+                                  hintText: Strings.en
+                                      ? Strings.enEmail
+                                      : Strings.cnEmail),
                             ),
                           ),
                           Card(
@@ -73,7 +77,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               },
                               textAlign: TextAlign.center,
                               decoration: textFieldDecoration.copyWith(
-                                  hintText: 'how should we call you?'),
+                                  hintText: Strings.en
+                                      ? Strings.enHowShouldWeCallYou
+                                      : Strings.cnHowShouldWeCallYou),
                             ),
                           ),
                           Card(
@@ -88,7 +94,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               textAlign: TextAlign.center,
                               obscureText: true,
                               decoration: textFieldDecoration.copyWith(
-                                  hintText: 'password'),
+                                  hintText: Strings.en
+                                      ? Strings.enPassword
+                                      : Strings.cnPassword),
                             ),
                           ),
                           Card(
@@ -103,7 +111,9 @@ class _SignUpPageState extends State<SignUpPage> {
                               textAlign: TextAlign.center,
                               obscureText: true,
                               decoration: textFieldDecoration.copyWith(
-                                  hintText: 'repeat password'),
+                                  hintText: Strings.en
+                                      ? Strings.enRepeatPassword
+                                      : Strings.cnRepeatPassword),
                             ),
                           ),
                         ],
@@ -111,27 +121,33 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   RoundedButton(
-                    title: 'SIGN UP',
+                    title: Strings.en ? Strings.enSignUp : Strings.cnSignUp,
                     color: Colors.orange[300],
                     onPressed: () async {
                       if (email == null ||
-                          password == null ||
                           username == null ||
+                          password == null ||
                           repeatPassword == null) {
                         Toast.show(
-                          'Please complete all fields',
-                          context,
-                          duration: 2,
-                        );
-                      } else if (password != repeatPassword) {
-                        Toast.show(
-                          'Passwords must match',
+                          Strings.en
+                              ? Strings.enCompleteAllFields
+                              : Strings.cnCompleteAllFields,
                           context,
                           duration: 2,
                         );
                       } else if (password.length < 6) {
                         Toast.show(
-                          'Password must be at least 6 characters',
+                          Strings.en
+                              ? Strings.enPasswordTooShort
+                              : Strings.cnPasswordTooShort,
+                          context,
+                          duration: 2,
+                        );
+                      } else if (password != repeatPassword) {
+                        Toast.show(
+                          Strings.en
+                              ? Strings.enPasswordNotMatching
+                              : Strings.cnPasswordNotMatching,
                           context,
                           duration: 2,
                         );
@@ -146,17 +162,43 @@ class _SignUpPageState extends State<SignUpPage> {
                             password: password,
                           );
                           if (user != null) {
-                            Strings.username = username;
+                            UserModel userModel = UserModel(
+                              uid: _auth.currentUser.uid,
+                              email: email,
+                              username: username,
+                              avatar: 1,
+                            );
+                            Helper.instace.addUserInfo(userModel);
                             Navigator.pushReplacementNamed(
                               context,
                               ChooseLanguagePage.id,
                             );
-                            setState(() {
-                              loading = false;
-                            });
+                          }
+                        } on FirebaseAuthException catch (e) {
+                          if (e.code == 'weak-password') {
+                            Toast.show(
+                              'Password to weak!',
+                              context,
+                              duration: 2,
+                            );
+                          } else if (e.code == 'email-already-in-use') {
+                            Toast.show(
+                              'Email already in use',
+                              context,
+                              duration: 2,
+                            );
                           }
                         } catch (e) {
                           print(e);
+                          Toast.show(
+                            'Failed to Sign Up',
+                            context,
+                            duration: 2,
+                          );
+                        } finally {
+                          setState(() {
+                            loading = false;
+                          });
                         }
                       }
                     },

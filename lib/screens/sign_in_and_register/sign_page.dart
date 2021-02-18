@@ -1,6 +1,7 @@
 import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_in_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_up_page.dart';
+import 'package:designedbyalla_ecotourism/strings.dart';
 import 'package:flutter/material.dart';
 
 class SignPage extends StatelessWidget {
@@ -40,14 +41,14 @@ class SignPage extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, SignInPage.id);
                   },
-                  title: 'SIGN IN',
+                  title: Strings.en ? Strings.enSignIn : Strings.cnSignIn,
                   color: Colors.teal[300],
                 ),
                 RoundedButton(
                   onPressed: () {
                     Navigator.pushNamed(context, SignUpPage.id);
                   },
-                  title: 'SIGN UP',
+                  title: Strings.en ? Strings.enSignUp : Strings.cnSignUp,
                   color: Colors.teal[300],
                 ),
               ],
