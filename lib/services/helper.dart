@@ -17,6 +17,8 @@ class Helper {
         'email': userModel.email,
         'username': userModel.username,
         'avatar': userModel.avatar,
+        'ecopoints': 0,
+        'last_daily_ecopoints': null,
       });
     } catch (e) {
       print(e);
@@ -34,10 +36,11 @@ class Helper {
           .get();
       userModel.username = doc.docs[0].data()['username'];
       userModel.avatar = doc.docs[0].data()['avatar'];
+      userModel.ecopoints = doc.docs[0].data()['ecopoints'];
+      userModel.lastDailyEcopoints = doc.docs[0].data()['last_daily_ecopoints'];
     } catch (e) {
       print(e);
     }
-    print(userModel.toString());
     return userModel;
   }
 
@@ -46,6 +49,37 @@ class Helper {
       await _firestore.collection('userinfo').doc(userModel.uid).update({
         'username': userModel.username,
         'avatar': userModel.avatar,
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> addUserSurveyResponse(
+    UserModel userModel,
+    int question,
+    List<int> responses,
+  ) async {
+    try {
+      await _firestore.collection('survey_response').doc(userModel.uid).set({
+        'uid': userModel.uid,
+        'email': userModel.email,
+        'question_0': responses[0],
+        'question_1': responses[1],
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<void> addDailyEcopoints() async {
+    UserModel user = await getCurrentUserInfo();
+    try {
+      await _firestore.collection('userinfo').doc(user.uid).update({
+        'ecopoints': user.lastDailyEcopoints == null
+            ? user.ecopoints + 20
+            : user.ecopoints + 10,
+        'last_daily_ecopoints': Timestamp.now(),
       });
     } catch (e) {
       print(e);

@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
 import 'package:designedbyalla_ecotourism/constants.dart';
 import 'package:designedbyalla_ecotourism/models/user_model.dart';
-import 'package:designedbyalla_ecotourism/screens/survey_page.dart';
+import 'package:designedbyalla_ecotourism/screens/survey/survey_page.dart';
 import 'package:designedbyalla_ecotourism/services/helper.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
 import 'package:flutter/material.dart';
@@ -50,7 +50,9 @@ class _ChooseAvatarState extends State<ChooseAvatar> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FloatingActionButton(
+                              elevation: 10,
                               heroTag: 'FAB1',
+                              backgroundColor: avatar == 1 ? Colors.teal[300] : Colors.orange[300],
                               onPressed: () {
                                 setState(() {
                                   avatar = 1;
@@ -58,11 +60,14 @@ class _ChooseAvatarState extends State<ChooseAvatar> {
                               },
                               child: Image.asset(
                                 'images/avatar_1.png',
+                                height: 50,
                               ),
                             ),
                             SizedBox(width: 16),
                             FloatingActionButton(
+                              elevation: 10,
                               heroTag: 'FAB2',
+                              backgroundColor: avatar == 2 ? Colors.teal[300] : Colors.orange[300],
                               onPressed: () {
                                 setState(() {
                                   avatar = 2;
@@ -70,11 +75,14 @@ class _ChooseAvatarState extends State<ChooseAvatar> {
                               },
                               child: Image.asset(
                                 'images/avatar_2.png',
+                                height: 50,
                               ),
                             ),
                             SizedBox(width: 16),
                             FloatingActionButton(
+                              elevation: 10,
                               heroTag: 'FAB3',
+                              backgroundColor: avatar == 3 ? Colors.teal[300] : Colors.orange[300],
                               onPressed: () {
                                 setState(() {
                                   avatar = 3;
@@ -82,6 +90,7 @@ class _ChooseAvatarState extends State<ChooseAvatar> {
                               },
                               child: Image.asset(
                                 'images/avatar_3.png',
+                                height: 50,
                               ),
                             ),
                           ],

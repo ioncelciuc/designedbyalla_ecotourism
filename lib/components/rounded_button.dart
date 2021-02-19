@@ -25,7 +25,7 @@ class RoundedButton extends StatelessWidget {
           minWidth: ButtonTheme.of(context).minWidth,
           onPressed: onPressed,
           child: Text(
-            title,
+            title ?? '',
             style: TextStyle(color: textColor ?? Colors.white),
           ),
         ),

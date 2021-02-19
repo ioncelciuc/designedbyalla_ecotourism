@@ -1,10 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class UserModel {
   String uid;
   String email;
   String username;
   int avatar = 1;
+  int ecopoints = 0;
+  Timestamp lastDailyEcopoints;
 
-  UserModel({this.uid, this.email, this.username, this.avatar});
+  UserModel({this.uid, this.email, this.username, this.avatar, this.ecopoints, this.lastDailyEcopoints});
 
   @override
   String toString() {

@@ -1,4 +1,6 @@
+import 'package:designedbyalla_ecotourism/screens/return_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -8,7 +10,11 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacementNamed(context, SignPage.id);
+        if (FirebaseAuth.instance.currentUser == null) {
+          Navigator.pushReplacementNamed(context, SignPage.id);
+        }else{
+          Navigator.pushReplacementNamed(context, ReturnPage.id);
+        }
       },
       child: SafeArea(
         child: Scaffold(

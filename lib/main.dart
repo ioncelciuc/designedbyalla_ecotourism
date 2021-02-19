@@ -1,10 +1,13 @@
 import 'package:designedbyalla_ecotourism/screens/choose_avatar.dart';
 import 'package:designedbyalla_ecotourism/screens/choose_language_page.dart';
+import 'package:designedbyalla_ecotourism/screens/ecotip_1.dart';
+import 'package:designedbyalla_ecotourism/screens/return_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_in_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_up_page.dart';
 import 'package:designedbyalla_ecotourism/screens/steps_page/steps_page.dart';
-import 'package:designedbyalla_ecotourism/screens/survey_page.dart';
+import 'package:designedbyalla_ecotourism/screens/survey/survey_container_page.dart';
+import 'package:designedbyalla_ecotourism/screens/survey/survey_page.dart';
 import 'package:designedbyalla_ecotourism/screens/welcome_screen.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,7 +31,6 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Roboto',
       ),
       initialRoute: WelcomeScreen.id,
-      //initialRoute: ChooseAvatar.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         SignPage.id: (context) => SignPage(),
@@ -38,6 +40,9 @@ class MyApp extends StatelessWidget {
         StepsPage.id: (context) => StepsPage(),
         ChooseAvatar.id: (contex) => ChooseAvatar(),
         SurveyPage.id: (context) => SurveyPage(),
+        SurveyContainerPage.id: (context) => SurveyContainerPage(),
+        ReturnPage.id: (context) => ReturnPage(),
+        Ecotip1.id: (context) => Ecotip1(),
       },
     );
   }

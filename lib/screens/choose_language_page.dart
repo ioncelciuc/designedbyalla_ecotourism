@@ -4,6 +4,7 @@ import 'package:designedbyalla_ecotourism/services/helper.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:toast/toast.dart';
 
 class ChooseLanguagePage extends StatefulWidget {
   static const String id = 'ChooseLanguagePage';
@@ -79,11 +80,12 @@ class _ChooseLanguagePageState extends State<ChooseLanguagePage> {
                     children: [
                       GestureDetector(
                         onTap: () async {
-                          SharedPreferences sharedPreferences =
-                              await SharedPreferences.getInstance();
-                          await sharedPreferences.setBool('EN', false);
-                          Strings.en = false;
-                          Navigator.pushReplacementNamed(context, StepsPage.id);
+                          // SharedPreferences sharedPreferences =
+                          //     await SharedPreferences.getInstance();
+                          // await sharedPreferences.setBool('EN', false);
+                          // Strings.en = false;
+                          // Navigator.pushReplacementNamed(context, StepsPage.id);
+                          Toast.show('Chinese not yet implemented', context);
                         },
                         child: Image.asset(
                           'images/language_cn.png',
