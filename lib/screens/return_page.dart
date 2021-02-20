@@ -15,16 +15,22 @@ class ReturnPage extends StatefulWidget {
 }
 
 class _ReturnPageState extends State<ReturnPage> {
+
+  int ecopointsToAdd;
+
   Future<void> initialization() async {
     UserModel user = await Helper.instace.getCurrentUserInfo();
     if (user.lastDailyEcopoints == null) {
       Strings.firstTimeClaimingEcopoints = true;
+      ecopointsToAdd = 20;
     } else {
       Strings.firstTimeClaimingEcopoints = false;
       DateTime now = Timestamp.now().toDate();
       DateTime lastClaim = user.lastDailyEcopoints.toDate();
       if (now.difference(lastClaim).inDays < 1) {
         Navigator.pushReplacementNamed(context, Ecotip1.id);
+      }else{
+        ecopointsToAdd = 10;
       }
     }
   }
@@ -76,7 +82,7 @@ class _ReturnPageState extends State<ReturnPage> {
                               ),
                               Image.asset('images/ecopoints.png'),
                               Text(
-                                '+${Strings.firstTimeClaimingEcopoints ? 20 : 10} ${Strings.en ? Strings.enEcopoints : Strings.cnEcopoints}',
+                                '+$ecopointsToAdd ${Strings.en ? Strings.enEcopoints : Strings.cnEcopoints}',
                                 style: TextStyle(
                                   fontSize: 32,
                                   fontWeight: FontWeight.bold,
@@ -106,15 +112,7 @@ class _ReturnPageState extends State<ReturnPage> {
                         title: Strings.en ? Strings.enClaim : Strings.cnClaim,
                         textColor: Colors.black,
                         onPressed: () async {
-                          await Helper.instace.addDailyEcopoints();
-                          // if (Strings.firstTimeClaimingEcopoints) {
-                          //   await Helper.instace.addDailyEcopoints(20);
-                          //   SharedPreferences sharedPreference =
-                          //       await SharedPreferences.getInstance();
-                          //   sharedPreference.setBool('FIRST_TIME_ECOPOINTS', false);
-                          // } else {
-                          //   await Helper.instace.addDailyEcopoints(10);
-                          // }
+                          await Helper.instace.addEcopoints(ecopointsToAdd);
                           Navigator.pushReplacementNamed(context, Ecotip1.id);
                         },
                       ),

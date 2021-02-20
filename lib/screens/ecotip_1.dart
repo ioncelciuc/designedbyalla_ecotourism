@@ -26,33 +26,19 @@ class Ecotip1 extends StatelessWidget {
                   child: Image.asset('images/ecotip_1.png'),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: RoundedButton(
-                      onPressed: () {
-                        Toast.show(
-                          'End of first part',
-                          context,
-                          duration: 2,
-                        );
-                      },
-                      title: Strings.en ? Strings.enImReady : Strings.cnImReady,
-                      textColor: Colors.black,
-                    ),
-                  ),
-                  Expanded(
-                    child: RoundedButton(
-                      onPressed: () async {
-                        FirebaseAuth.instance.signOut();
-                        Navigator.pushReplacementNamed(context, SignPage.id);
-                      },
-                      title: 'Log Out',
-                      textColor: Colors.black,
-                    ),
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 64),
+                child: RoundedButton(
+                  onPressed: () {
+                    Toast.show(
+                      'End of first part',
+                      context,
+                      duration: 2,
+                    );
+                  },
+                  title: Strings.en ? Strings.enImReady : Strings.cnImReady,
+                  textColor: Colors.black,
+                ),
               ),
             ],
           ),

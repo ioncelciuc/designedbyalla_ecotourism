@@ -34,7 +34,7 @@ class _SurveyContainerPageState extends State<SurveyContainerPage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 100),
+                padding: EdgeInsets.symmetric(horizontal: 64),
                 child: RoundedButton(
                   title: 'Next',
                   textColor: Colors.black,

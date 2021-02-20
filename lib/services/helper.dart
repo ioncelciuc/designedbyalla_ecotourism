@@ -72,13 +72,11 @@ class Helper {
     }
   }
 
-  Future<void> addDailyEcopoints() async {
+  Future<void> addEcopoints(int ecopoints) async {
     UserModel user = await getCurrentUserInfo();
     try {
       await _firestore.collection('userinfo').doc(user.uid).update({
-        'ecopoints': user.lastDailyEcopoints == null
-            ? user.ecopoints + 20
-            : user.ecopoints + 10,
+        'ecopoints': ecopoints,
         'last_daily_ecopoints': Timestamp.now(),
       });
     } catch (e) {

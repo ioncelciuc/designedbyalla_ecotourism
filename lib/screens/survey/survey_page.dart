@@ -42,7 +42,7 @@ class _SurveyPageState extends State<SurveyPage> {
         body: ModalProgressHUD(
           inAsyncCall: loading,
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.only(top: 16, right: 16, left: 16),
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -72,7 +72,6 @@ class _SurveyPageState extends State<SurveyPage> {
                                   ? Strings.enSurveyQuestions[question]
                                   : Strings.cnSurveyQuestions[question],
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 20),
                             ),
                             Expanded(
                               child: Padding(

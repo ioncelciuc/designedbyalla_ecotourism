@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Ecotourism Demo',
       theme: ThemeData(
+        backgroundColor: Color(0xFFEAECEF),
         fontFamily: 'Roboto',
       ),
       initialRoute: WelcomeScreen.id,

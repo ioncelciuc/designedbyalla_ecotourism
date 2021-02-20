@@ -25,6 +25,7 @@ class _ChooseAvatarState extends State<ChooseAvatar> {
           padding: EdgeInsets.only(top: 16, left: 8, right: 8),
           child: Center(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Image.asset(
                   'images/logo_choose_avatar.png',
@@ -99,17 +100,20 @@ class _ChooseAvatarState extends State<ChooseAvatar> {
                     ],
                   ),
                 ),
-                RoundedButton(
-                  onPressed: () async {
-                    UserModel userModel =
-                        await Helper.instace.getCurrentUserInfo();
-                    userModel.avatar = avatar;
-                    await Helper.instace.updateUserInfo(userModel);
-                    Navigator.pushReplacementNamed(context, SurveyPage.id);
-                  },
-                  color: Colors.white,
-                  title: Strings.en ? Strings.enBegin : Strings.cnBegin,
-                  textColor: Colors.black,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 64),
+                  child: RoundedButton(
+                    onPressed: () async {
+                      UserModel userModel =
+                          await Helper.instace.getCurrentUserInfo();
+                      userModel.avatar = avatar;
+                      await Helper.instace.updateUserInfo(userModel);
+                      Navigator.pushReplacementNamed(context, SurveyPage.id);
+                    },
+                    color: Colors.white,
+                    title: Strings.en ? Strings.enBegin : Strings.cnBegin,
+                    textColor: Colors.black,
+                  ),
                 ),
               ],
             ),
