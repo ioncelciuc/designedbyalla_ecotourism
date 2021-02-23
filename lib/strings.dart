@@ -11,6 +11,9 @@ class Strings {
   static const String enForgotPassword = 'Forgot password?';
   static const String cnForgotPassword = 'SIGN UP';
 
+  static const String enRecoverPassword = 'RECOVER PASSWORD';
+  static const String cnRecoverPassword = 'SIGN UP';
+
   static const String enEmail = 'email';
   static const String cnEmail = 'email';
 
@@ -131,10 +134,12 @@ class Strings {
   static const String enEcopoints = 'Ecopoints';
   static const String cnEcopoints = 'Choose your preffered language';
 
-  static const String enReturnPageCongrats1 = 'Congratulations on your first step of becoming a responsible ecotourist';
+  static const String enReturnPageCongrats1 =
+      'Congratulations on your first step of becoming a responsible ecotourist';
   static const String cnReturnPageCongrats1 = 'Choose your preffered language';
 
-  static const String enReturnPageCongrats2 = 'Congratulations on your ongoing efforts of becoming a responsible ecotourist';
+  static const String enReturnPageCongrats2 =
+      'Congratulations on your ongoing efforts of becoming a responsible ecotourist';
   static const String cnReturnPageCongrats2 = 'Choose your preffered language';
 
   static const String enClaim = 'CLAIM';
@@ -142,4 +147,17 @@ class Strings {
 
   static const String enImReady = 'I\'M READY!';
   static const String cnImReady = 'Choose your preffered language';
+
+  static const String enAbout = 'About';
+  static const String cnAbout = 'Choose your preffered language';
+
+  static const String enSignOut = 'Sign Out';
+  static const String cnSignOut = 'Choose your preffered language';
+
+  static const List<String> enEcosite = [
+    'Welcome to the home of your new journey!\nTake the time to explore the app and get a feel of the place. First, follow the screen for a quick tutorial.',
+  ];
+  static const List<String> cnEcosite = [
+    'Hmm, before we begin, how familiar are you about ecotourism?',
+  ];
 }

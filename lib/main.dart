@@ -1,7 +1,9 @@
 import 'package:designedbyalla_ecotourism/screens/choose_avatar.dart';
 import 'package:designedbyalla_ecotourism/screens/choose_language_page.dart';
 import 'package:designedbyalla_ecotourism/screens/ecotip_1.dart';
+import 'package:designedbyalla_ecotourism/screens/home/home.dart';
 import 'package:designedbyalla_ecotourism/screens/return_page.dart';
+import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/recover_password.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_in_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_page.dart';
 import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_up_page.dart';
@@ -28,7 +30,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Ecotourism Demo',
       theme: ThemeData(
-        backgroundColor: Color(0xFFEAECEF),
+        scaffoldBackgroundColor: Color(0xFFEAECEF),
         fontFamily: 'Roboto',
       ),
       initialRoute: WelcomeScreen.id,
@@ -37,6 +39,7 @@ class MyApp extends StatelessWidget {
         SignPage.id: (context) => SignPage(),
         SignInPage.id: (context) => SignInPage(),
         SignUpPage.id: (context) => SignUpPage(),
+        RecoverPassword.id: (context) => RecoverPassword(),
         ChooseLanguagePage.id: (context) => ChooseLanguagePage(),
         StepsPage.id: (context) => StepsPage(),
         ChooseAvatar.id: (contex) => ChooseAvatar(),
@@ -44,6 +47,7 @@ class MyApp extends StatelessWidget {
         SurveyContainerPage.id: (context) => SurveyContainerPage(),
         ReturnPage.id: (context) => ReturnPage(),
         Ecotip1.id: (context) => Ecotip1(),
+        Home.id: (context) => Home(),
       },
     );
   }

@@ -1,5 +1,5 @@
 import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
-import 'package:designedbyalla_ecotourism/models/user_model.dart';
+import 'package:designedbyalla_ecotourism/models/user_info.dart';
 import 'package:designedbyalla_ecotourism/screens/choose_language_page.dart';
 import 'package:designedbyalla_ecotourism/services/helper.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
@@ -179,10 +179,14 @@ class _SignUpPageState extends State<SignUpPage> {
                               password: password,
                             );
                             if (user != null) {
-                              UserModel userModel = UserModel(
+                              await _auth.currentUser.updateProfile(
+                                displayName: username,
+                              );
+                              UserInformation userModel = UserInformation(
                                 uid: _auth.currentUser.uid,
-                                email: email,
-                                username: username,
+                                ecopoints: 0,
+                                ecosupply: 0,
+                                avatar: 1,
                               );
                               Helper.instace.addUserInfo(userModel);
                               Navigator.pushReplacementNamed(

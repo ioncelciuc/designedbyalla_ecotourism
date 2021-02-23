@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
 import 'package:designedbyalla_ecotourism/constants.dart';
-import 'package:designedbyalla_ecotourism/models/user_model.dart';
+import 'package:designedbyalla_ecotourism/models/user_info.dart';
 import 'package:designedbyalla_ecotourism/screens/ecotip_1.dart';
 import 'package:designedbyalla_ecotourism/services/helper.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
@@ -15,11 +15,10 @@ class ReturnPage extends StatefulWidget {
 }
 
 class _ReturnPageState extends State<ReturnPage> {
-
   int ecopointsToAdd;
 
   Future<void> initialization() async {
-    UserModel user = await Helper.instace.getCurrentUserInfo();
+    UserInformation user = await Helper.instace.getCurrentUserInfo();
     if (user.lastDailyEcopoints == null) {
       Strings.firstTimeClaimingEcopoints = true;
       ecopointsToAdd = 20;
@@ -27,9 +26,9 @@ class _ReturnPageState extends State<ReturnPage> {
       Strings.firstTimeClaimingEcopoints = false;
       DateTime now = Timestamp.now().toDate();
       DateTime lastClaim = user.lastDailyEcopoints.toDate();
-      if (now.difference(lastClaim).inDays < 1) {
+      if (now.difference(lastClaim).inHours < 12) {
         Navigator.pushReplacementNamed(context, Ecotip1.id);
-      }else{
+      } else {
         ecopointsToAdd = 10;
       }
     }
@@ -80,7 +79,11 @@ class _ReturnPageState extends State<ReturnPage> {
                                 style: TextStyle(fontSize: 24),
                                 textAlign: TextAlign.center,
                               ),
-                              Image.asset('images/ecopoints.png'),
+                              Expanded(
+                                child: Container(
+                                  child: Image.asset('images/ecopoints.png'),
+                                ),
+                              ),
                               Text(
                                 '+$ecopointsToAdd ${Strings.en ? Strings.enEcopoints : Strings.cnEcopoints}',
                                 style: TextStyle(

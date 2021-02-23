@@ -1,7 +1,7 @@
 import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
 import 'package:designedbyalla_ecotourism/constants.dart';
-import 'package:designedbyalla_ecotourism/screens/choose_language_page.dart';
 import 'package:designedbyalla_ecotourism/screens/return_page.dart';
+import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/recover_password.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -97,11 +97,7 @@ class SignInPageState extends State<SignInPage> {
                             SizedBox(height: 8),
                             GestureDetector(
                               onTap: () {
-                                Toast.show(
-                                  'Forgot password to be implemented',
-                                  context,
-                                  duration: 2,
-                                );
+                                Navigator.pushNamed(context, RecoverPassword.id);
                               },
                               child: Text(
                                 Strings.en

@@ -1,7 +1,6 @@
-import 'package:designedbyalla_ecotourism/models/user_model.dart';
 import 'package:designedbyalla_ecotourism/screens/steps_page/steps_page.dart';
-import 'package:designedbyalla_ecotourism/services/helper.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
@@ -14,22 +13,6 @@ class ChooseLanguagePage extends StatefulWidget {
 }
 
 class _ChooseLanguagePageState extends State<ChooseLanguagePage> {
-  UserModel userModel;
-
-  void initialize() async {
-    userModel = UserModel(uid: '', email: '', username: '', avatar: 1);
-    UserModel newUser = await Helper.instace.getCurrentUserInfo();
-    setState(() {
-      userModel = newUser;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    initialize();
-  }
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -63,7 +46,8 @@ class _ChooseLanguagePageState extends State<ChooseLanguagePage> {
                               ),
                             ),
                             TextSpan(
-                              text: '${userModel.username}!',
+                              text:
+                                  '${FirebaseAuth.instance.currentUser.displayName}!',
                             ),
                           ],
                         ),

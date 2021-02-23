@@ -1,9 +1,7 @@
 import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
-import 'package:designedbyalla_ecotourism/screens/sign_in_and_register/sign_page.dart';
+import 'package:designedbyalla_ecotourism/screens/home/home.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:toast/toast.dart';
 
 class Ecotip1 extends StatelessWidget {
   static const String id = 'Ecotip1';
@@ -30,11 +28,7 @@ class Ecotip1 extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 64),
                 child: RoundedButton(
                   onPressed: () {
-                    Toast.show(
-                      'End of first part',
-                      context,
-                      duration: 2,
-                    );
+                    Navigator.pushReplacementNamed(context, Home.id);
                   },
                   title: Strings.en ? Strings.enImReady : Strings.cnImReady,
                   textColor: Colors.black,

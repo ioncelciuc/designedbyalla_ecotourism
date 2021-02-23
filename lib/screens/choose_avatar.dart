@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
-import 'package:designedbyalla_ecotourism/constants.dart';
-import 'package:designedbyalla_ecotourism/models/user_model.dart';
+import 'package:designedbyalla_ecotourism/models/user_info.dart';
 import 'package:designedbyalla_ecotourism/screens/survey/survey_page.dart';
 import 'package:designedbyalla_ecotourism/services/helper.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
@@ -104,7 +102,7 @@ class _ChooseAvatarState extends State<ChooseAvatar> {
                   padding: const EdgeInsets.symmetric(horizontal: 64),
                   child: RoundedButton(
                     onPressed: () async {
-                      UserModel userModel =
+                      UserInformation userModel =
                           await Helper.instace.getCurrentUserInfo();
                       userModel.avatar = avatar;
                       await Helper.instace.updateUserInfo(userModel);
