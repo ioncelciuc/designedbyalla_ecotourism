@@ -21,6 +21,7 @@ void main() async {
   await Firebase.initializeApp();
   SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
   Strings.en = sharedPreferences.getBool('EN') ?? true;
+  Strings.showTutorial = sharedPreferences.getBool('TUTORIAL') ?? true;
   runApp(MyApp());
 }
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Ecotourism Demo',
       theme: ThemeData(
         scaffoldBackgroundColor: Color(0xFFEAECEF),

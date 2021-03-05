@@ -18,6 +18,12 @@ class Helper {
         'ecopoints': 0,
         'last_daily_ecopoints': null,
         'ecosupply': 0,
+        'temperature': 7,
+        'problem1': true,
+        'problem2': true,
+        'problem3': true,
+        'problem4': true,
+        'problem5': true,
       });
     } catch (e) {
       print(e);
@@ -36,6 +42,12 @@ class Helper {
       userModel.ecopoints = doc.docs[0].data()['ecopoints'];
       userModel.lastDailyEcopoints = doc.docs[0].data()['last_daily_ecopoints'];
       userModel.ecosupply = doc.docs[0].data()['ecosupply'];
+      userModel.temperature = doc.docs[0].data()['temperature'];
+      userModel.problem1 = doc.docs[0].data()['problem1'];
+      userModel.problem2 = doc.docs[0].data()['problem2'];
+      userModel.problem3 = doc.docs[0].data()['problem3'];
+      userModel.problem4 = doc.docs[0].data()['problem4'];
+      userModel.problem5 = doc.docs[0].data()['problem5'];
     } catch (e) {
       print(e);
     }
@@ -46,6 +58,11 @@ class Helper {
     try {
       await _firestore.collection('userinfo').doc(user.uid).update({
         'avatar': user.avatar,
+        'problem1' : user.problem1,
+        'problem2' : user.problem2,
+        'problem3' : user.problem3,
+        'problem4' : user.problem4,
+        'problem5' : user.problem5,
       });
     } catch (e) {
       print(e);

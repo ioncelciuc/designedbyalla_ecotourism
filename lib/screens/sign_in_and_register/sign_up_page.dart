@@ -187,6 +187,12 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ecopoints: 0,
                                 ecosupply: 0,
                                 avatar: 1,
+                                temperature: 7,
+                                problem1: true,
+                                problem2: true,
+                                problem3: true,
+                                problem4: true,
+                                problem5: true,
                               );
                               Helper.instace.addUserInfo(userModel);
                               Navigator.pushReplacementNamed(
