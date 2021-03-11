@@ -95,10 +95,10 @@ class _MissionState extends State<Mission> {
         builder: (context) => Material(
           color: Color.fromARGB(255, 89, 188, 203),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 64),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
             child: Column(
               children: [
-                Image.asset('images/logo_no_name.png'),
+                Image.asset('images/logo_no_name.png', height: 50),
                 SizedBox(height: 16),
                 Expanded(
                   child: Card(
@@ -158,10 +158,10 @@ class _MissionState extends State<Mission> {
         builder: (context) => Material(
           color: Color.fromARGB(255, 89, 188, 203),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 64),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
             child: Column(
               children: [
-                Image.asset('images/logo_no_name.png'),
+                Image.asset('images/logo_no_name.png', height: 50),
                 SizedBox(height: 16),
                 Expanded(
                   child: Card(
@@ -302,10 +302,10 @@ class _MissionState extends State<Mission> {
         builder: (context) => Material(
           color: Color.fromARGB(255, 89, 188, 203),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 64),
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 32),
             child: Column(
               children: [
-                Image.asset('images/logo_no_name.png'),
+                Image.asset('images/logo_no_name.png', height: 50),
                 SizedBox(height: 16),
                 Expanded(
                   child: Card(
@@ -314,7 +314,7 @@ class _MissionState extends State<Mission> {
                     child: Padding(
                       padding: const EdgeInsets.only(
                           top: 32, left: 16, right: 16, bottom: 16),
-                      child: ListView(
+                      child: Column(
                         children: [
                           Text(
                             Strings.en
@@ -338,13 +338,11 @@ class _MissionState extends State<Mission> {
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(height: 32),
-                          SingleChildScrollView(
-                            child: Text(
-                              Strings.en
-                                  ? Strings.enMissionDonated[textIndex]
-                                  : Strings.cnMissionDonated[textIndex],
-                              textAlign: TextAlign.center,
-                            ),
+                          Text(
+                            Strings.en
+                                ? Strings.enMissionDonated[textIndex]
+                                : Strings.cnMissionDonated[textIndex],
+                            textAlign: TextAlign.center,
                           ),
                           Expanded(
                             child: Container(),
@@ -357,10 +355,11 @@ class _MissionState extends State<Mission> {
                                   color: Color.fromARGB(255, 89, 188, 203),
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(
-                                        horizontal: 16, vertical: 64),
+                                        horizontal: 16, vertical: 32),
                                     child: Column(
                                       children: [
-                                        Image.asset('images/logo_no_name.png'),
+                                        Image.asset('images/logo_no_name.png',
+                                            height: 50),
                                         SizedBox(height: 16),
                                         Expanded(
                                           child: Card(
