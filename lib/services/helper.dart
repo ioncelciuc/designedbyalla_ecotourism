@@ -25,6 +25,11 @@ class Helper {
         'problem4': true,
         'problem5': true,
       });
+
+      await _firestore.collection('userinfo').doc(user.uid).update({
+        'ecosuppliesAvailable': user.ecosuppliesAvailable,
+        'missionsCompleted': user.missionsCompleted,
+      });
     } catch (e) {
       print(e);
     }
@@ -48,6 +53,9 @@ class Helper {
       userModel.problem3 = doc.docs[0].data()['problem3'];
       userModel.problem4 = doc.docs[0].data()['problem4'];
       userModel.problem5 = doc.docs[0].data()['problem5'];
+      userModel.ecosuppliesAvailable =
+          doc.docs[0].data()['ecosuppliesAvailable'];
+      userModel.missionsCompleted = doc.docs[0].data()['missionsCompleted'];
     } catch (e) {
       print(e);
     }
@@ -57,12 +65,17 @@ class Helper {
   Future<void> updateUserInfo(UserInformation user) async {
     try {
       await _firestore.collection('userinfo').doc(user.uid).update({
+        'ecopoints': user.ecopoints,
+        'ecosupply': user.ecosupply,
         'avatar': user.avatar,
-        'problem1' : user.problem1,
-        'problem2' : user.problem2,
-        'problem3' : user.problem3,
-        'problem4' : user.problem4,
-        'problem5' : user.problem5,
+        'problem1': user.problem1,
+        'problem2': user.problem2,
+        'problem3': user.problem3,
+        'problem4': user.problem4,
+        'problem5': user.problem5,
+        'temperature': user.temperature,
+        'ecosuppliesAvailable': user.ecosuppliesAvailable,
+        'missionsCompleted': user.missionsCompleted,
       });
     } catch (e) {
       print(e);
@@ -88,7 +101,10 @@ class Helper {
   Future<void> addEcopoints(int ecopoints) async {
     UserInformation currentUser = await getCurrentUserInfo();
     try {
-      await _firestore.collection('userinfo').doc(_auth.currentUser.uid).update({
+      await _firestore
+          .collection('userinfo')
+          .doc(_auth.currentUser.uid)
+          .update({
         'ecopoints': currentUser.ecopoints + ecopoints,
         'last_daily_ecopoints': Timestamp.now(),
       });

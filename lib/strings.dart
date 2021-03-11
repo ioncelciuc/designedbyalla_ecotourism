@@ -258,6 +258,37 @@ class Strings {
   ];
   static const List<String> cnProblem5 = [];
 
+  static const String enEcosupplyEarned = 'Ecosupply Earned';
+  static const String cnEcosupplyEarned = 'Ecosupply Earned';
+
+  static const String enTemperatureReduced = 'Temperature Reduced';
+  static const String cnTemperatureReduced = 'Ecosupply Earned';
+
+  static const List<String> enEcosupplyName = [
+    'Cultural Heritage Conservation',
+    'Respect Local',
+    'Helping Hand',
+    'Knowledge Power',
+    'Wilderness Welfare',
+    'Wilderness Care',
+    'Leave No Trace',
+    'Only Eco',
+    'Safe Activities',
+    'Action Matters',
+  ];
+  static const List<String> cnEcosupplyName = [
+    'images/ecosupply_cultural_heritage_conservation.png',
+    'images/ecosupply_respect_local.png',
+    'images/ecosupply_helping_hand.png',
+    'images/ecosupply_knowledge_power.png',
+    'images/ecosupply_wilderness_welfare.png',
+    'images/ecosupply_wilderness_care.png',
+    'images/ecosupply_leave_no_trace.png',
+    'images/ecosupply_only_eco.png',
+    'images/ecosupply_safe_activities.png',
+    'images/ecosupply_action_matters.png',
+  ];
+
   static const List<String> ecosupplyImage = [
     'images/ecosupply_cultural_heritage_conservation.png',
     'images/ecosupply_respect_local.png',
@@ -311,4 +342,89 @@ class Strings {
       'This item is not applicable to fix the problem.\n\nChoose another ecosupply item or go on Adventure to equip yourself with the right knowledge to fix the problem.';
   static const String cnItemNotApplicable =
       'Choose an ecosupply to fix. Swipe to navigate.';
+
+  static const String enContributeInRealWorldMission =
+      'Contribute in real world mission';
+  static const String cnContributeInRealWorldMission =
+      'Choose an ecosupply to fix. Swipe to navigate.';
+
+  static const String enProject = 'The project';
+  static const String cnProject = 'Choose';
+
+  static const String enDonate = 'Donate';
+  static const String cnDonate = '';
+
+  static const String enRequirement = 'Requirement';
+  static const String cnRequirement = '';
+
+  static const List<int> missionEcopoints = [50, 60, 70, 80];
+
+  static const List<String> enMissionTitle = [
+    'Support Giant Panda Conservation Effort',
+    'Pledge for water pollution awareness',
+    'Support the Mangrove Forest Protection',
+    'Aid local Tibetan against ‘white pollution’',
+  ];
+  static const List<String> cnMissionTitle = [
+    'Mission: Donate ecopoints in exchange for donation funds for the Giant Panda Conservation.',
+    '',
+    '',
+    '',
+  ];
+
+  static const List<String> enMissionSubtitle = [
+    'Mission: Donate ecopoints in exchange for donation funds for the Giant Panda Conservation',
+    'Funds: Donate ecopoints in exchange for voice in backing up the project',
+    'Support: Exchange ecopoints with funds to support volunteering program of mangrove conservation and ecological restoration',
+    'Support: Exchange ecopoints with funds for volunteers to control the abandoned plastic trash',
+  ];
+  static const List<String> cnMissionSubtitle = [
+    'Mission: Donate ecopoints in exchange for donation funds for the Giant Panda Conservation.\n',
+  ];
+
+  static const List<String> enMissionText = [
+    'For over 20 years, this organization has worked for the preservation of the panda population and has now resolved three key problems of breeding, which restricted reproduction of the panda for a long time. The current panda birth and survival rates are some of the best in the world. The panda population of the program has risen from an initial 6 animals to over 70 pandas. In 2003 the first stage of a state-of-the-art panda base was completed: a veritable panda paradise. It is divided into 6 sections: panda raising and breeding area, scientific study area, food preparing and animal hospital area, staff living area, bamboo base area and tourist accommodation area. Thanks to rigorous conservation efforts, the giant panda is no longer on the World Wildlife Federation\'s endangered species list; however, they are still considered a \"vulnerable\" species. Your ecopoints will be converted into funds donation to the Panda Reserve, allowing them to continue this important work. 50 ecopoints for 5¥ in funds donation.',
+    'China will endeavour to remediate damaged ecological systems in major river basins and restore aquatic animals and plants there during the 14th Five-Year Plan (2021-25). The country will also set up buffer zones to facilitate the protection of rivers and lakes while making efforts to transform life and production styles that invade the ecological systems of water bodies, and gradually restore aquatic animals and plants in rivers and lakes with damaged water ecological systems. The plan will be drafted in a people-cantered manner. The environment of water bodies that are near the public will be further improved to increasingly meet people\'s scenic, entertainment and sports demands. The country will increase the number of national monitoring stations for surface water from the current 1,940 to 3,646 in its efforts to enhance water pollution management.\n\n You can now support this project by donating your ecopoints in exchange of pledge for voices that will be collected for awareness materials of water pollution and surface water quality to the public.',
+    'Remote sensing results showed that China\'s mangrove forests are mainly distributed in areas including Guangdong province, Guangxi Zhuang autonomous region and Hainan province. Guangdong province has the largest mangrove area, accounting for 41 percent of the total stretch. A total of 487 hectares of mangrove forests were added in 2020 from 2018, of which 59 percent were artificially planted and 41 percent restored naturally. Around 150 hectares of mangrove forests have depleted, some of which are caused by human activities such as pond reclamation and port construction. According to sources at the center, they will make full use of satellite remote sensing and other technologies to continuously monitor mangrove forest growth and the impact of human activities, to support mangrove conservation and ecological restoration. You can now support this project by donating your ecopoints in exchange funds to support the volunteering program of mangrove conservation and ecological restoration.',
+    'The economic boom that enriched China has fed urbanization along with the consumption of commodities and other waste-generating activities. The worst pollution in Tibetan area results from rural farmers\' markets and the common use of plastic bags, which are super-thin and relatively expensive to recycle. The association taps the volunteer spirit on the plateau to control abandoned plastic trash, aka "white pollution". The volunteers are of all ages and come from different walks of life, but many of the most active are members of the Tibetan ethnic group who were born in the region\'s preindustrial era, when plastic was rarely used. Whit pollution was "haunting" China\'s vast rural areas. Even though almost a decade had passed since Tibet adopted the plastics ban, some small businesses were still trying to evade inspections, which exacerbated pollution. To improve recycling rates, they are calling for greater efforts to raise awareness of plastic pollution and about the harm plastics do to farmland and livestock.\n\nYou can now support this project by exchanging ecopoints for volunteer funds to control the abandoned plastic trash. 80 ecopoints for ¥10 in volunteering funds to tackle the issue.',
+  ];
+  static const List<String> cnMissionText = [];
+
+  static const List<String> enMissionNotEnoughEcopoints = [
+    'Sorry, you do not have enough ecopoints to contribute.',
+    'Check other missions or earn more ecopoints in Adventure.',
+    'We\'ll be waiting!',
+  ];
+  static const List<String> cnMissionNotEnoughEcopoints = [
+    'Mission: Donate ecopoints in exchange for donation funds for the Giant Panda Conservation.',
+    '',
+    '',
+  ];
+
+  static const List<String> enMissionAlreadyDonated = [
+    'Good Intention!',
+    'You have done your part for this mission. We encourage you to check other missions with your kind donations.',
+    'We\'ll be waiting!',
+  ];
+  static const List<String> cnMissionAlreadyDonated = [
+    'Mission: Donate ecopoints in exchange for donation funds for the Giant Panda Conservation.',
+    '',
+    '',
+  ];
+
+  static const String enGreatNews = 'Great News!';
+  static const String cnGreatNews = '';
+
+  static const String enEcopointsDonated = 'Ecopoints Donated';
+  static const String cnEcopointsDonated = '';
+
+  static const List<String> enMissionDonated = [
+    'Your donation to the Panda Reserve allowing them to continue the important work for the preservation of the panda population. The panda population of the program has risen from an initial 6 animals to over 70 pandas and counting.\n\nThanks to rigorous conservation efforts, the giant panda is no longer on the World Wildlife Federation\'s endangered species list',
+    'Your collective voices are impactful! With your strong pledge, the environment of water bodies that are near the public will be further improved to increasingly meet people\'s scenic, entertainment and sports demands. The country will increase the number of national monitoring stations for surface water from the current 1,940 to 3,646 in its efforts to enhance water pollution management.',
+    'Your donation will support the volunteering program of mangrove conservation and ecological restoration. They will make full use of satellite remote sensing and other technologies to continuously monitor mangrove forest growth and the impact of human activities, to support mangrove conservation and ecological restoration. The mangroves in China will be kept safe in the future to come.',
+    'Your donation helps in providing funds for the volunteers to control the abandoned plastic trash. It has become the worst pollution in the Tibetan area, but many earth-loving souls are doing their best to help keeping the area plastic-free. The association plans to introduce incentives for rural buyers to employ reusable cloth bags rather than plastics. The program will be roll out in Lhasa\'s markets that will allow shoppers to trade 20 plastic bags for a cloth bag, and there will be a series of lecture about the harm plastics do to farmland and livestock.',
+  ];
+  static const List<String> cnMissionDonated = [
+    'Mission: Donate ecopoints in exchange for donation funds for the Giant Panda Conservation.',
+  ];
 }

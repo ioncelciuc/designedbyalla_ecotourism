@@ -193,6 +193,24 @@ class _SignUpPageState extends State<SignUpPage> {
                                 problem3: true,
                                 problem4: true,
                                 problem5: true,
+                                ecosuppliesAvailable: [
+                                  false,
+                                  false,
+                                  false,
+                                  false,
+                                  false,
+                                  false,
+                                  false,
+                                  false,
+                                  false,
+                                  false,
+                                ],
+                                missionsCompleted: [
+                                  false,
+                                  false,
+                                  false,
+                                  false,
+                                ],
                               );
                               Helper.instace.addUserInfo(userModel);
                               Navigator.pushReplacementNamed(

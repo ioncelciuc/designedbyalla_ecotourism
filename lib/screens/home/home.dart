@@ -384,6 +384,7 @@ class HomeState extends State<Home> {
                           },
                     child: Card(
                       shape: roundedRectangleBorder(radius: 10),
+                      color: Color(0xFFEAECEF),
                       elevation: 5,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -409,6 +410,7 @@ class HomeState extends State<Home> {
                           },
                     child: Card(
                       shape: roundedRectangleBorder(radius: 10),
+                      color: Color(0xFFEAECEF),
                       elevation: 5,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -434,6 +436,7 @@ class HomeState extends State<Home> {
                           },
                     child: Card(
                       shape: roundedRectangleBorder(radius: 10),
+                      color: Color(0xFFEAECEF),
                       elevation: 5,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -459,6 +462,7 @@ class HomeState extends State<Home> {
                           },
                     child: Card(
                       shape: roundedRectangleBorder(radius: 10),
+                      color: Color(0xFFEAECEF),
                       elevation: 5,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

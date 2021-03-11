@@ -4,11 +4,11 @@ import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
 import 'package:designedbyalla_ecotourism/constants.dart';
 import 'package:designedbyalla_ecotourism/models/user_info.dart';
 import 'package:designedbyalla_ecotourism/screens/home/home.dart';
-import 'package:designedbyalla_ecotourism/screens/return_page.dart';
 import 'package:designedbyalla_ecotourism/services/helper.dart';
 import 'package:designedbyalla_ecotourism/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:toast/toast.dart';
 
 double height = 0;
 double width = 0;
@@ -22,7 +22,7 @@ class Ecosite extends StatefulWidget {
   EcositeState createState() => EcositeState();
 }
 
-class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
+class EcositeState extends State<Ecosite> {
   UserInformation userInfo = UserInformation();
   double _sliderValue = 0;
   int tutorialIndex = 0;
@@ -47,8 +47,8 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
     }
   }
 
-  @override
-  bool get wantKeepAlive => true;
+  // @override
+  // bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -61,7 +61,7 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
 
   void showEcosupplyDialog() {
     PageController controller = PageController(initialPage: 0);
-    List<Widget> widgetList = List<Widget>();
+    List<Widget> widgetList = [];
     for (int i = 0; i < Strings.ecosupplyImage.length; i++) {
       widgetList.add(
         Column(
@@ -74,7 +74,36 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                 shape: roundedRectangleBorder(radius: 10),
                 child: Padding(
                   padding: const EdgeInsets.all(16),
-                  child: Image.asset(Strings.ecosupplyImage[i]),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.arrow_back_ios_rounded),
+                        onPressed: () {
+                          controller.previousPage(
+                            duration: Duration(milliseconds: 350),
+                            curve: Curves.decelerate,
+                          );
+                        },
+                      ),
+                      Expanded(
+                        child: Opacity(
+                          opacity: userInfo.ecosuppliesAvailable[i] == false
+                              ? 0.5
+                              : 1,
+                          child: Image.asset(Strings.ecosupplyImage[i]),
+                        ),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.arrow_forward_ios_rounded),
+                        onPressed: () {
+                          controller.nextPage(
+                            duration: Duration(milliseconds: 350),
+                            curve: Curves.decelerate,
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -149,7 +178,17 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                         ),
                         SizedBox(height: 8),
                         InkWell(
+                          child: Image.asset(
+                            'images/use.png',
+                            height: 50,
+                          ),
                           onTap: () async {
+                            if (userInfo.ecosuppliesAvailable[
+                                    controller.page.toInt()] ==
+                                false) {
+                              Toast.show('Ecosupply not available', context);
+                              return;
+                            }
                             bool solvesProblem = false;
                             switch (problemIndex) {
                               case 1:
@@ -184,7 +223,14 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                 break;
                             }
                             if (solvesProblem) {
+                              if (userInfo.temperature > 0) {
+                                userInfo.temperature = userInfo.temperature - 1;
+                              }
                               await Helper.instace.updateUserInfo(userInfo);
+                              setState(() {
+                                _sliderValue = double.parse(
+                                    userInfo.temperature.toString());
+                              });
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) => Material(
@@ -194,8 +240,10 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.stretch,
                                       children: [
-                                        Image.asset('images/logo_no_name.png',
-                                            height: 70),
+                                        Image.asset(
+                                          'images/logo_no_name.png',
+                                          height: 70,
+                                        ),
                                         SizedBox(height: 8),
                                         Expanded(
                                           child: Container(
@@ -374,7 +422,9 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                             child: Padding(
                                               padding: const EdgeInsets.all(16),
                                               child: Column(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   Text(
                                                     Strings.en
@@ -430,10 +480,6 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                               );
                             }
                           },
-                          child: Image.asset(
-                            'images/claim.png',
-                            height: 50,
-                          ),
                         ),
                       ],
                     ),
@@ -748,7 +794,7 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
 
   @override
   Widget build(BuildContext context) {
-    super.build(context);
+    //super.build(context);
     return Stack(
       children: [
         Padding(
@@ -795,7 +841,7 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                             'images/progress_bar_ecopoint.png',
                                           ),
                                           Text(
-                                            '${userInfo.ecopoints}',
+                                            '${userInfo.ecopoints ?? 0}',
                                             style: TextStyle(
                                               fontSize: 20,
                                               fontWeight: FontWeight.bold,
@@ -971,7 +1017,7 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                         'images/progress_bar_ecosupply.png',
                                       ),
                                       Text(
-                                        '${userInfo.ecosupply}',
+                                        '${userInfo.ecosupply ?? 0}',
                                         style: TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
@@ -999,30 +1045,27 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                     child: Column(
                       children: [
                         Container(
-                          height: 120,
+                          height: 150,
                           padding: const EdgeInsets.all(8.0),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Stack(
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Image.asset(
                                     'images/avatar_${userInfo.avatar ?? '1'}.png',
                                     height: 50,
                                     width: 50,
                                   ),
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Opacity(
-                                        opacity: opacityArrowImage,
-                                        child: Image.asset(
-                                          'images/arrow_down.png',
-                                          height: 50,
-                                          width: 50,
-                                        ),
-                                      ),
-                                    ],
+                                  Opacity(
+                                    opacity: opacityArrowImage,
+                                    child: Image.asset(
+                                      'images/arrow_down.png',
+                                      height: 50,
+                                      width: 50,
+                                    ),
                                   ),
                                 ],
                               ),
@@ -1035,62 +1078,65 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                     child: Column(
                                       children: [
                                         Expanded(
-                                          flex: 2,
+                                          flex: 3,
                                           child: SingleChildScrollView(
-                                            child: Text(
-                                              problemIndex == null
-                                                  ? (Strings.showTutorial &&
-                                                          tutorialIndex <
-                                                              Strings.enTutorial
-                                                                  .length
-                                                      ? (Strings.en
-                                                          ? Strings.enTutorial[
-                                                              tutorialIndex]
-                                                          : Strings.cnTutorial[
-                                                              tutorialIndex])
-                                                      : (Strings.en
-                                                          ? Strings.enInfoBox[
-                                                              infoBoxIndex]
-                                                          : Strings.cnInfoBox[
-                                                              infoBoxIndex]))
-                                                  : (problemIndex == 1
-                                                      ? (Strings.en
-                                                          ? Strings.enProblem1[
-                                                              problemTextIndex]
-                                                          : Strings.cnProblem1[
-                                                              problemTextIndex])
-                                                      : problemIndex == 2
-                                                          ? (Strings.en
-                                                              ? Strings
-                                                                      .enProblem2[
-                                                                  problemTextIndex]
-                                                              : Strings
-                                                                      .cnProblem2[
-                                                                  problemTextIndex])
-                                                          : problemIndex == 3
-                                                              ? (Strings.en
-                                                                  ? Strings
-                                                                          .enProblem3[
-                                                                      problemTextIndex]
-                                                                  : Strings
-                                                                          .cnProblem3[
-                                                                      problemTextIndex])
-                                                              : problemIndex ==
-                                                                      4
-                                                                  ? (Strings.en
-                                                                      ? Strings
-                                                                              .enProblem4[
-                                                                          problemTextIndex]
-                                                                      : Strings
-                                                                              .cnProblem4[
-                                                                          problemTextIndex])
-                                                                  : (Strings.en
-                                                                      ? Strings
-                                                                              .enProblem5[
-                                                                          problemTextIndex]
-                                                                      : Strings
-                                                                              .cnProblem5[
-                                                                          problemTextIndex])),
+                                            child: Align(
+                                              alignment: Alignment.topLeft,
+                                              child: Text(
+                                                problemIndex == null
+                                                    ? (Strings.showTutorial &&
+                                                            tutorialIndex <
+                                                                Strings
+                                                                    .enTutorial
+                                                                    .length
+                                                        ? (Strings.en
+                                                            ? Strings.enTutorial[
+                                                                tutorialIndex]
+                                                            : Strings.cnTutorial[
+                                                                tutorialIndex])
+                                                        : (Strings.en
+                                                            ? Strings.enInfoBox[
+                                                                infoBoxIndex]
+                                                            : Strings.cnInfoBox[
+                                                                infoBoxIndex]))
+                                                    : (problemIndex == 1
+                                                        ? (Strings.en
+                                                            ? Strings.enProblem1[
+                                                                problemTextIndex]
+                                                            : Strings
+                                                                    .cnProblem1[
+                                                                problemTextIndex])
+                                                        : problemIndex == 2
+                                                            ? (Strings.en
+                                                                ? Strings
+                                                                        .enProblem2[
+                                                                    problemTextIndex]
+                                                                : Strings
+                                                                        .cnProblem2[
+                                                                    problemTextIndex])
+                                                            : problemIndex == 3
+                                                                ? (Strings.en
+                                                                    ? Strings
+                                                                            .enProblem3[
+                                                                        problemTextIndex]
+                                                                    : Strings
+                                                                            .cnProblem3[
+                                                                        problemTextIndex])
+                                                                : problemIndex ==
+                                                                        4
+                                                                    ? (Strings
+                                                                            .en
+                                                                        ? Strings.enProblem4[
+                                                                            problemTextIndex]
+                                                                        : Strings.cnProblem4[
+                                                                            problemTextIndex])
+                                                                    : (Strings
+                                                                            .en
+                                                                        ? Strings.enProblem5[
+                                                                            problemTextIndex]
+                                                                        : Strings
+                                                                            .cnProblem5[problemTextIndex])),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -1210,6 +1256,7 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                 bottomDivision: 7,
                                 leftDivision: 4,
                                 buttonIndex: 2,
+                                userInfo: userInfo,
                               ),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -1232,6 +1279,7 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                     bottomDivision: 3,
                                     leftDivision: 6,
                                     buttonIndex: 1,
+                                    userInfo: userInfo,
                                   ),
                                 ],
                               ),
@@ -1241,6 +1289,7 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                 bottomDivision: 2.5,
                                 leftDivision: 1.7,
                                 buttonIndex: 3,
+                                userInfo: userInfo,
                               ),
                               ProblemButton(
                                 opacity: opacityProblemButton4,
@@ -1248,6 +1297,7 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                 bottomDivision: 3.5,
                                 leftDivision: 1.4,
                                 buttonIndex: 4,
+                                userInfo: userInfo,
                               ),
                               ProblemButton(
                                 opacity: opacityProblemButton5,
@@ -1255,6 +1305,7 @@ class EcositeState extends State<Ecosite> with AutomaticKeepAliveClientMixin {
                                 bottomDivision: 7.5,
                                 leftDivision: 1.4,
                                 buttonIndex: 5,
+                                userInfo: userInfo,
                               ),
                             ],
                           ),
@@ -1376,7 +1427,6 @@ class _EcositeImageState extends State<EcositeImage> {
       height = getHeight();
       width = getWidth();
     });
-    print('HEIGHT: $height\nWIDTH: $width\n');
   }
 
   @override

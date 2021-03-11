@@ -19,7 +19,7 @@ class _SurveyPageState extends State<SurveyPage> {
   UserInformation user = UserInformation();
   int question = 0;
   int buttonSelected = -1;
-  List<int> responses = List<int>();
+  List<int> responses =[];
   bool loading = false;
 
   void initialization() async {

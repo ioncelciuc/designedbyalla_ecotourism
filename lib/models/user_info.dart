@@ -12,6 +12,24 @@ class UserInformation {
   bool problem3 = true;
   bool problem4 = true;
   bool problem5 = true;
+  List<dynamic> ecosuppliesAvailable = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+  List<dynamic> missionsCompleted = [
+    false,
+    false,
+    false,
+    false,
+  ];
 
   UserInformation({
     this.uid,
@@ -25,5 +43,7 @@ class UserInformation {
     this.problem3,
     this.problem4,
     this.problem5,
+    this.ecosuppliesAvailable,
+    this.missionsCompleted,
   });
 }
