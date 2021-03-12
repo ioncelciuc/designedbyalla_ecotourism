@@ -427,4 +427,11 @@ class Strings {
   static const List<String> cnMissionDonated = [
     'Mission: Donate ecopoints in exchange for donation funds for the Giant Panda Conservation.',
   ];
+
+  static const String enAchievement = 'ACHIEVEMENT';
+  static const String cnAchievement = '';
+
+  static const String enCheckIns = 'CHECK IN’S';
+  static const String cnCheckIns = '';
+  
 }

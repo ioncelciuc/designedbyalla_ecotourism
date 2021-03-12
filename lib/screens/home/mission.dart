@@ -389,6 +389,7 @@ class _MissionState extends State<Mission> {
                                                   SizedBox(height: 16),
                                                   Expanded(
                                                     child: Column(
+                                                      crossAxisAlignment: CrossAxisAlignment.center,
                                                       children: rewardList,
                                                     ),
                                                   ),
