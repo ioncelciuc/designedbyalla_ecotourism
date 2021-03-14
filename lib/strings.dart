@@ -433,5 +433,23 @@ class Strings {
 
   static const String enCheckIns = 'CHECK IN’S';
   static const String cnCheckIns = '';
+
+  static const String enGreatWork = 'Great work on your achievement!';
+  static const String cnGreatWork = '';
+
+  static const List<String> enProgressCardText = [
+    ' ecosite problem fixed',
+    ' completed adventure',
+    ' mission contributed',
+    'Reduced ',
+    ' °C of temperature rise',
+  ];
+  static const List<String> cnProgressCardText = [
+    ' ecosite problem fixed',
+    ' completed adventure',
+    ' mission contributed',
+    'Reduced ',
+    ' °C of temperature rise',
+  ];
   
 }

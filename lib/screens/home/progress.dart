@@ -1,4 +1,5 @@
 import 'package:designedbyalla_ecotourism/components/progress_bar_item.dart';
+import 'package:designedbyalla_ecotourism/components/progress_card.dart';
 import 'package:designedbyalla_ecotourism/components/rounded_button.dart';
 import 'package:designedbyalla_ecotourism/constants.dart';
 import 'package:designedbyalla_ecotourism/models/user_info.dart';
@@ -17,8 +18,26 @@ class _ProgressState extends State<Progress> {
   int page = 0;
   PageController controller = PageController(initialPage: 0);
 
+  int ecositeProblemFixed = 0;
+  int completedAdventure = 0;
+  int missionContributed = 0;
+  int temperatureReduced = 0;
+
   void initialize() async {
     UserInformation existingUser = await Helper.instace.getCurrentUserInfo();
+    //ecositeProbmeFixed
+    if (existingUser.problem1 == false) ecositeProblemFixed += 1;
+    if (existingUser.problem2 == false) ecositeProblemFixed += 1;
+    if (existingUser.problem3 == false) ecositeProblemFixed += 1;
+    if (existingUser.problem4 == false) ecositeProblemFixed += 1;
+    if (existingUser.problem5 == false) ecositeProblemFixed += 1;
+    //completedAdventure
+    //TODO
+    //missionContributed
+    for (int i = 0; i < existingUser.missionsCompleted.length; i++)
+      if (existingUser.missionsCompleted[i] == true) missionContributed++;
+    //temperatureReduced
+    temperatureReduced = 7 - existingUser.temperature;
     setState(() {
       userInfo = existingUser;
       _sliderValue = userInfo.temperature.ceilToDouble();
@@ -293,16 +312,70 @@ class _ProgressState extends State<Progress> {
                               });
                             },
                             children: [
-                              Container(
-                                height: 100,
-                                width: 100,
-                                color: Colors.green,
+                              //Achievement
+                              Column(
+                                children: [
+                                  Expanded(
+                                    flex: 1,
+                                    child: Image.asset(
+                                      'images/avatar_${userInfo.avatar ?? 1}.png',
+                                      height: 70,
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Text(
+                                    Strings.en
+                                        ? Strings.enGreatWork
+                                        : Strings.cnGreatWork,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Expanded(
+                                    flex: 2,
+                                    child: Row(
+                                      children: [
+                                        ProgressCard(
+                                          iconPath:
+                                              'images/problemButtonRed.png',
+                                          text:
+                                              '$ecositeProblemFixed${Strings.en ? Strings.enProgressCardText[0] : Strings.cnProgressCardText[0]}',
+                                        ),
+                                        ProgressCard(
+                                          iconPath: 'images/globe.png',
+                                          text:
+                                              '$completedAdventure${Strings.en ? Strings.enProgressCardText[1] : Strings.cnProgressCardText[1]}',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Expanded(
+                                    flex: 2,
+                                    child: Row(
+                                      children: [
+                                        ProgressCard(
+                                          iconPath: 'images/earth.png',
+                                          text:
+                                              '$missionContributed${Strings.en ? Strings.enProgressCardText[2] : Strings.cnProgressCardText[2]}',
+                                        ),
+                                        ProgressCard(
+                                          iconPath:
+                                              'images/progress_bar_sun_sea.png',
+                                          text:
+                                              '${Strings.en ? Strings.enProgressCardText[3] : Strings.cnProgressCardText[3]}$temperatureReduced${Strings.en ? Strings.enProgressCardText[4] : Strings.cnProgressCardText[4]}',
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Container(
-                                height: 100,
-                                width: 100,
-                                color: Colors.red,
-                              ),
+
+                              //check in's
+                              Center(
+                                child: Text('Adventure must be finished first'),
+                              )
                             ],
                           ),
                         ),
