@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toast/toast.dart';
 
-double height = 0;
 double width = 0;
 
 class Ecosite extends StatefulWidget {
@@ -1410,23 +1409,16 @@ class EcositeImage extends StatefulWidget {
 class _EcositeImageState extends State<EcositeImage> {
   GlobalKey _key = GlobalKey();
 
-  double getHeight() {
-    final RenderBox renderBox = _key.currentContext.findRenderObject();
-    final size = renderBox.size;
-    return size.height;
-  }
-
   double getWidth() {
     final RenderBox renderBox = _key.currentContext.findRenderObject();
-    final size = renderBox.size;
-    return size.width;
+    return renderBox.size.width;
   }
 
   void setData() {
     setState(() {
-      height = getHeight();
       width = getWidth();
     });
+    print("WIDTH ECOSITE: $width");
   }
 
   @override

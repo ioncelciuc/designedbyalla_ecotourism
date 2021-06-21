@@ -1,3 +1,4 @@
+import 'package:designedbyalla_ecotourism/screens/adventure/adventure_screen.dart';
 import 'package:designedbyalla_ecotourism/screens/choose_avatar.dart';
 import 'package:designedbyalla_ecotourism/screens/choose_language_page.dart';
 import 'package:designedbyalla_ecotourism/screens/ecotip_1.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         ReturnPage.id: (context) => ReturnPage(),
         Ecotip1.id: (context) => Ecotip1(),
         Home.id: (context) => Home(),
+        AdventureScreen.id: (context) => AdventureScreen(),
       },
     );
   }
